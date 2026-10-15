@@ -2,6 +2,7 @@
 	"name": "llmforautism-web",
 	"version": "0.1.0",
 	"private": true,
+	"packageManager": "pnpm@11.18.0",
 	"scripts": {
 		"dev": "next dev --turbopack",
 		"build": "next build --turbopack",
@@ -40,11 +41,5 @@
 		"prettier": "3.7.4",
 		"tailwindcss": "^4",
 		"typescript": "^5"
-	},
-	"pnpm": {
-		"overrides": {
-			"@types/react": "19.2.7",
-			"@types/react-dom": "19.2.3"
-		}
 	}
 }
