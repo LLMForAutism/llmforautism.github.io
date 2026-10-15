@@ -7,15 +7,15 @@ import LangSwitcher from "./ui/lang-switcher";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+const navItems = [
+	{ label: "Home", href: "/" },
+	{ label: "Proyek", href: "#proyek" },
+	{ label: "Blog", href: "/blogs" },
+	{ label: "Tentang Kami", href: "/about" },
+] as const;
+
 export default function Navbar() {
 	const [isOpen, setIsOpen] = useState(false);
-
-	const navItems = [
-		{ label: "Home", href: "/" },
-		{ label: "Proyek", href: "#proyek" },
-		{ label: "Blog", href: "/blogs" },
-		{ label: "Tentang Kami", href: "/about" },
-	];
 
 	const scrollToSection = (href: string) => {
 		setIsOpen(false);

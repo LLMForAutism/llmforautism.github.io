@@ -2,6 +2,28 @@ import Image from "next/image";
 import { Calendar, CheckCircle2, Clock, ClipboardList } from "lucide-react";
 import { Project } from "@/repositories/projects";
 
+// Status configuration
+const statusConfig = {
+	done: {
+		label: "Selesai",
+		icon: <CheckCircle2 className="w-4 h-4" />,
+		bgColor: "bg-emerald-500",
+		textColor: "text-white",
+	},
+	ongoing: {
+		label: "Sedang Berjalan",
+		icon: <Clock className="w-4 h-4" />,
+		bgColor: "bg-blue-500",
+		textColor: "text-white",
+	},
+	planned: {
+		label: "Direncanakan",
+		icon: <ClipboardList className="w-4 h-4" />,
+		bgColor: "bg-amber-500",
+		textColor: "text-white",
+	},
+} as const;
+
 export default function ProjectCard({
 	project,
 	className = "",
@@ -10,29 +32,6 @@ export default function ProjectCard({
 	className?: string;
 }) {
 	const isImageLeft = project.imagePosition === "left";
-
-	// Status configuration
-	const statusConfig = {
-		done: {
-			label: "Selesai",
-			icon: <CheckCircle2 className="w-4 h-4" />,
-			bgColor: "bg-emerald-500",
-			textColor: "text-white",
-		},
-		ongoing: {
-			label: "Sedang Berjalan",
-			icon: <Clock className="w-4 h-4" />,
-			bgColor: "bg-blue-500",
-			textColor: "text-white",
-		},
-		planned: {
-			label: "Direncanakan",
-			icon: <ClipboardList className="w-4 h-4" />,
-			bgColor: "bg-amber-500",
-			textColor: "text-white",
-		},
-	};
-
 	const currentStatus = statusConfig[project.status];
 
 	return (

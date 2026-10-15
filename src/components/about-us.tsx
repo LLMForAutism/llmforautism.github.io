@@ -97,9 +97,9 @@ export default function AboutUs() {
 							msOverflowStyle: "none",
 						}}
 					>
-						{members.map((member, index) => (
+						{members.map((member) => (
 							<div
-								key={index}
+								key={member.name}
 								className="flex-shrink-0 w-[280px] sm:w-[320px] snap-start"
 							>
 								<PersonCard member={member} />
@@ -136,13 +136,6 @@ export default function AboutUs() {
 					</button>
 				</div>
 			</div>
-
-			{/* Custom CSS to hide scrollbar */}
-			<style jsx>{`
-				.scrollbar-hide::-webkit-scrollbar {
-					display: none;
-				}
-			`}</style>
 		</section>
 	);
 }

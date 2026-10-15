@@ -24,8 +24,8 @@ export default function ProjectShowcase() {
 
 				{/* Project Cards */}
 				<div className="space-y-24 max-w-6xl mx-auto">
-					{projects.map((project, index) => (
-						<ProjectCard key={index} project={project} />
+					{projects.map((project) => (
+						<ProjectCard key={project.idHtml} project={project} />
 					))}
 				</div>
 			</div>

@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
 		unoptimized: true,
 	},
 	trailingSlash: true,
+	experimental: {
+		optimizePackageImports: ["lucide-react", "@radix-ui/react-slot"],
+	},
 };
 
 const withMdx = createMdx({
