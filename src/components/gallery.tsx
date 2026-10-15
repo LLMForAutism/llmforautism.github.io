@@ -1,9 +1,10 @@
 import Image from "next/image";
 import fs from "fs";
 import path from "path";
+import { cache } from "react";
 
 // Server Component - reads files at build time
-async function getGalleryImages() {
+const getGalleryImages = cache(async () => {
 	const galleryDir = path.join(process.cwd(), "public", "images", "gallery");
 
 	try {
@@ -21,7 +22,7 @@ async function getGalleryImages() {
 		console.error("Error reading gallery directory:", error);
 		return [];
 	}
-}
+});
 
 // Generate dynamic layout pattern based on image count
 function generateLayoutPattern(imageCount: number) {

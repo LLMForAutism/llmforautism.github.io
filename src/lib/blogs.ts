@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { cache } from "react";
 
 const blogsDirectory = path.join(process.cwd(), "src/content/blogs");
 
@@ -18,14 +19,14 @@ export interface BlogPost {
 	lastModified?: string;
 }
 
-export function getAllBlogSlugs() {
+export const getAllBlogSlugs = cache((): string[] => {
 	const fileNames = fs.readdirSync(blogsDirectory);
 	return fileNames
 		.filter((fileName) => fileName.endsWith(".mdx"))
 		.map((fileName) => fileName.replace(/\.mdx$/, ""));
-}
+});
 
-export function getBlogBySlug(slug: string): BlogPost | null {
+export const getBlogBySlug = cache((slug: string): BlogPost | null => {
 	try {
 		const fullPath = path.join(blogsDirectory, `${slug}.mdx`);
 		const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -48,9 +49,9 @@ export function getBlogBySlug(slug: string): BlogPost | null {
 		console.error("Failed to load blog:", error);
 		return null;
 	}
-}
+});
 
-export function getAllBlogPosts(): BlogPost[] {
+export const getAllBlogPosts = cache((): BlogPost[] => {
 	const slugs = getAllBlogSlugs();
 	const posts = slugs
 		.map((slug) => getBlogBySlug(slug))
@@ -61,4 +62,4 @@ export function getAllBlogPosts(): BlogPost[] {
 		});
 
 	return posts;
-}
+});

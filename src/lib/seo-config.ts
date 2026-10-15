@@ -4,8 +4,8 @@
  */
 
 export const SEO_CONFIG = {
-	// TODO: Update this with your actual production domain
-	SITE_URL: "https://llmforautism.com",
+	SITE_URL:
+		process.env.NEXT_PUBLIC_SITE_URL || "https://llmforautism.github.io",
 	SITE_NAME: "LLMForAutism",
 	SITE_TITLE: "LLMForAutism - Teknologi AI untuk Mendukung Anak Autism",
 	SITE_DESCRIPTION:

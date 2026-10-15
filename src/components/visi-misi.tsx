@@ -2,34 +2,34 @@ import Image from "next/image";
 import { Target } from "lucide-react";
 import childrenFunWithGuitar from "@/assets/img/children-fun-with-guitar.jpg";
 
-export default function VisiMisi() {
-	const misiItems = [
-		{
-			id: 1,
-			title: "Mengembangkan Teknologi Tepat Guna",
-			description:
-				"Terus menyempurnakan platform terapi digital berbasis LLM yang aman, efektif, dan dirancang khusus untuk kebutuhan unik anak autisme.",
-		},
-		{
-			id: 2,
-			title: "Menjembatani Kesenjangan Akses",
-			description:
-				"Menyediakan layanan terapi berbiaya rendah yang mampu menembus batasan geografis, sehingga dapat dijangkau oleh keluarga di seluruh penjuru Indonesia.",
-		},
-		{
-			id: 3,
-			title: "Berkolaborasi Secara Aktif",
-			description:
-				"Bekerja sama secara erat dengan terapis, yayasan, orang tua, dan para ahli untuk memastikan solusi kami selalu relevan, teruji, dan memberikan dampak nyata.",
-		},
-		{
-			id: 4,
-			title: "Mengintegrasikan Metode Terapi Terbaik",
-			description:
-				"Mengimplementasikan dan mengadaptasi teknik-teknik terapi yang terbukti secara klinis (seperti Manding, FCT, ABC, dan Roleplay) ke dalam pengalaman aplikasi yang interaktif dan menarik.",
-		},
-	];
+const misiItems = [
+	{
+		id: 1,
+		title: "Mengembangkan Teknologi Tepat Guna",
+		description:
+			"Terus menyempurnakan platform terapi digital berbasis LLM yang aman, efektif, dan dirancang khusus untuk kebutuhan unik anak autisme.",
+	},
+	{
+		id: 2,
+		title: "Menjembatani Kesenjangan Akses",
+		description:
+			"Menyediakan layanan terapi berbiaya rendah yang mampu menembus batasan geografis, sehingga dapat dijangkau oleh keluarga di seluruh penjuru Indonesia.",
+	},
+	{
+		id: 3,
+		title: "Berkolaborasi Secara Aktif",
+		description:
+			"Bekerja sama secara erat dengan terapis, yayasan, orang tua, dan para ahli untuk memastikan solusi kami selalu relevan, teruji, dan memberikan dampak nyata.",
+	},
+	{
+		id: 4,
+		title: "Mengintegrasikan Metode Terapi Terbaik",
+		description:
+			"Mengimplementasikan dan mengadaptasi teknik-teknik terapi yang terbukti secara klinis (seperti Manding, FCT, ABC, dan Roleplay) ke dalam pengalaman aplikasi yang interaktif dan menarik.",
+	},
+];
 
+export default function VisiMisi() {
 	return (
 		<section className="relative overflow-hidden bg-whitesmoke py-20 md:py-32">
 			<div className="container mx-auto px-4">

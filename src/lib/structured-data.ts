@@ -56,7 +56,7 @@ export interface WebSiteSchema {
 }
 
 export function generateWebSiteSchema(
-	includeSearchAction: boolean = true,
+	includeSearchAction: boolean = true
 ): WebSiteSchema {
 	const schema: WebSiteSchema = {
 		"@context": "https://schema.org",
@@ -110,7 +110,7 @@ export interface BlogPostingSchema {
 
 export function generateBlogPostingSchema(
 	post: BlogPost,
-	slug: string,
+	slug: string
 ): BlogPostingSchema {
 	const url = getCanonicalUrl(`/blogs/${slug}`);
 
@@ -160,7 +160,7 @@ export interface BreadcrumbListSchema {
 }
 
 export function generateBreadcrumbSchema(
-	items: BreadcrumbItem[],
+	items: BreadcrumbItem[]
 ): BreadcrumbListSchema {
 	return {
 		"@context": "https://schema.org",

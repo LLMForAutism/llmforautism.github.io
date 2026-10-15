@@ -13,88 +13,118 @@ import {
 } from "lucide-react";
 import Navbar from "../../components/navbar";
 
+// Gallery items with metadata (hoisted outside component)
+const galleryItems = [
+	{
+		id: 1,
+		src: "/images/gallery/team-meeting-1.jpg",
+		alt: "Tim volunteer sedang berdiskusi tentang pengembangan aplikasi LLM untuk anak autisme",
+		title: "Tim Meeting - Perencanaan Aplikasi",
+		date: "2024-09-15",
+		category: "Pengembangan",
+		description:
+			"Sesi brainstorming tim untuk merancang fitur-fitur aplikasi pembelajaran interaktif.",
+	},
+	{
+		id: 2,
+		src: "/images/gallery/coding-session.jpg",
+		alt: "Developer volunteer mengkoding aplikasi AI untuk membantu komunikasi anak autisme",
+		title: "Coding Session - AI Development",
+		date: "2024-09-20",
+		category: "Teknologi",
+		description:
+			"Pengembangan model bahasa untuk membantu komunikasi anak dengan spektrum autisme.",
+	},
+	{
+		id: 3,
+		src: "/images/gallery/testing-with-kids.jpg",
+		alt: "Volunteer menguji aplikasi bersama anak-anak autisme dan terapis",
+		title: "User Testing dengan Anak-anak",
+		date: "2024-10-05",
+		category: "Testing",
+		description:
+			"Sesi testing langsung dengan anak-anak untuk memastikan aplikasi mudah digunakan.",
+	},
+	{
+		id: 4,
+		src: "/images/gallery/workshop-parents.jpg",
+		alt: "Workshop untuk orang tua tentang penggunaan teknologi AI dalam terapi autisme",
+		title: "Workshop Orang Tua",
+		date: "2024-10-12",
+		category: "Edukasi",
+		description:
+			"Pelatihan untuk orang tua dalam menggunakan tools teknologi untuk mendukung anak mereka.",
+	},
+	{
+		id: 5,
+		src: "/images/gallery/app-demo.jpg",
+		alt: "Demo aplikasi LLM yang membantu anak autisme belajar komunikasi",
+		title: "Demo Aplikasi Terbaru",
+		date: "2024-10-18",
+		category: "Produk",
+		description:
+			"Presentasi fitur terbaru aplikasi yang membantu pembelajaran sosial dan komunikasi.",
+	},
+	{
+		id: 6,
+		src: "/images/gallery/volunteer-training.jpg",
+		alt: "Pelatihan volunteer baru tentang autism spectrum disorder dan teknologi assistive",
+		title: "Pelatihan Volunteer Baru",
+		date: "2024-10-25",
+		category: "Pengembangan",
+		description:
+			"Orientasi dan pelatihan untuk volunteer baru tentang autisme dan teknologi pendukung.",
+	},
+];
+
+const categories = [
+	"Semua",
+	"Pengembangan",
+	"Teknologi",
+	"Testing",
+	"Edukasi",
+	"Produk",
+] as const;
+
+function getCategoryIcon(category: string) {
+	switch (category) {
+		case "Pengembangan":
+		case "Testing":
+		case "Edukasi":
+			return <Users className="w-4 h-4" />;
+		case "Teknologi":
+		case "Produk":
+			return <Code className="w-4 h-4" />;
+		default:
+			return <Calendar className="w-4 h-4" />;
+	}
+}
+
+function ImagePlaceholder({ className }: { className?: string }) {
+	return (
+		<div className={`bg-muted flex items-center justify-center ${className}`}>
+			<div className="text-center">
+				<ImageIcon className="w-12 h-12 text-muted-foreground mx-auto mb-2" />
+				<p className="text-sm text-muted-foreground">Gambar tidak tersedia</p>
+			</div>
+		</div>
+	);
+}
+
 export default function Gallery() {
 	const [selectedImage, setSelectedImage] = useState<number | null>(null);
-	const [imageErrors, setImageErrors] = useState<Set<number>>(new Set());
-
-	// Gallery items with metadata
-	const galleryItems = [
-		{
-			id: 1,
-			src: "/images/gallery/team-meeting-1.jpg",
-			alt: "Tim volunteer sedang berdiskusi tentang pengembangan aplikasi LLM untuk anak autisme",
-			title: "Tim Meeting - Perencanaan Aplikasi",
-			date: "2024-09-15",
-			category: "Pengembangan",
-			description:
-				"Sesi brainstorming tim untuk merancang fitur-fitur aplikasi pembelajaran interaktif.",
-		},
-		{
-			id: 2,
-			src: "/images/gallery/coding-session.jpg",
-			alt: "Developer volunteer mengkoding aplikasi AI untuk membantu komunikasi anak autisme",
-			title: "Coding Session - AI Development",
-			date: "2024-09-20",
-			category: "Teknologi",
-			description:
-				"Pengembangan model bahasa untuk membantu komunikasi anak dengan spektrum autisme.",
-		},
-		{
-			id: 3,
-			src: "/images/gallery/testing-with-kids.jpg",
-			alt: "Volunteer menguji aplikasi bersama anak-anak autisme dan terapis",
-			title: "User Testing dengan Anak-anak",
-			date: "2024-10-05",
-			category: "Testing",
-			description:
-				"Sesi testing langsung dengan anak-anak untuk memastikan aplikasi mudah digunakan.",
-		},
-		{
-			id: 4,
-			src: "/images/gallery/workshop-parents.jpg",
-			alt: "Workshop untuk orang tua tentang penggunaan teknologi AI dalam terapi autisme",
-			title: "Workshop Orang Tua",
-			date: "2024-10-12",
-			category: "Edukasi",
-			description:
-				"Pelatihan untuk orang tua dalam menggunakan tools teknologi untuk mendukung anak mereka.",
-		},
-		{
-			id: 5,
-			src: "/images/gallery/app-demo.jpg",
-			alt: "Demo aplikasi LLM yang membantu anak autisme belajar komunikasi",
-			title: "Demo Aplikasi Terbaru",
-			date: "2024-10-18",
-			category: "Produk",
-			description:
-				"Presentasi fitur terbaru aplikasi yang membantu pembelajaran sosial dan komunikasi.",
-		},
-		{
-			id: 6,
-			src: "/images/gallery/volunteer-training.jpg",
-			alt: "Pelatihan volunteer baru tentang autism spectrum disorder dan teknologi assistive",
-			title: "Pelatihan Volunteer Baru",
-			date: "2024-10-25",
-			category: "Pengembangan",
-			description:
-				"Orientasi dan pelatihan untuk volunteer baru tentang autisme dan teknologi pendukung.",
-		},
-	];
-
-	const categories = [
-		"Semua",
-		"Pengembangan",
-		"Teknologi",
-		"Testing",
-		"Edukasi",
-		"Produk",
-	];
+	const [imageErrors, setImageErrors] = useState<Set<number>>(() => new Set());
 	const [selectedCategory, setSelectedCategory] = useState("Semua");
 
 	const filteredItems =
 		selectedCategory === "Semua"
 			? galleryItems
 			: galleryItems.filter((item) => item.category === selectedCategory);
+
+	const handleCategoryChange = (category: string) => {
+		setSelectedCategory(category);
+		setSelectedImage(null);
+	};
 
 	const handleImageError = (itemId: number) => {
 		setImageErrors((prev) => new Set(prev).add(itemId));
@@ -122,32 +152,6 @@ export default function Gallery() {
 		}
 	};
 
-	const getCategoryIcon = (category: string) => {
-		switch (category) {
-			case "Pengembangan":
-				return <Users className="w-4 h-4" />;
-			case "Teknologi":
-				return <Code className="w-4 h-4" />;
-			case "Testing":
-				return <Users className="w-4 h-4" />;
-			case "Edukasi":
-				return <Users className="w-4 h-4" />;
-			case "Produk":
-				return <Code className="w-4 h-4" />;
-			default:
-				return <Calendar className="w-4 h-4" />;
-		}
-	};
-
-	const ImagePlaceholder = ({ className }: { className?: string }) => (
-		<div className={`bg-muted flex items-center justify-center ${className}`}>
-			<div className="text-center">
-				<ImageIcon className="w-12 h-12 text-muted-foreground mx-auto mb-2" />
-				<p className="text-sm text-muted-foreground">Gambar tidak tersedia</p>
-			</div>
-		</div>
-	);
-
 	return (
 		<div>
 			<Navbar />
@@ -170,7 +174,7 @@ export default function Gallery() {
 						{categories.map((category) => (
 							<button
 								key={category}
-								onClick={() => setSelectedCategory(category)}
+								onClick={() => handleCategoryChange(category)}
 								className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
 									selectedCategory === category
 										? "bg-primary text-primary-foreground shadow-md"

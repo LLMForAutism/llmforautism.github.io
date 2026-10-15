@@ -8,4 +8,4 @@ Allow: /
 Disallow: /api/
 
 # Sitemap location
-Sitemap: https://llmforautism.com/sitemap.xml
+Sitemap: https://llmforautism.github.io/sitemap.xml

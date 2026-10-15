@@ -77,8 +77,8 @@ export default function AboutUs() {
 									style={{ fontFamily: "Poppins, sans-serif" }}
 								>
 									Mewujudkan sistem terapi berbasis AI yang inklusif, mudah
-									diakses, dan terjangkau untuk mendukung perkembangan
-									anak-anak dengan autisme di Indonesia.
+									diakses, dan terjangkau untuk mendukung perkembangan anak-anak
+									dengan autisme di Indonesia.
 								</p>
 							</div>
 

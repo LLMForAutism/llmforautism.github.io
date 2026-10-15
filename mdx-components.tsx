@@ -161,6 +161,8 @@ const components: MDXComponents = {
 	img: (props: ComponentPropsWithoutRef<"img">) => (
 		<img
 			className="rounded-xl shadow-lg my-8 w-full border-2 border-mint-green"
+			loading="lazy"
+			decoding="async"
 			{...props}
 		/>
 	),

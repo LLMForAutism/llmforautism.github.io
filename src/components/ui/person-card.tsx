@@ -14,7 +14,7 @@ export default function PersonCard({
 }) {
 	const [imageSrc, setImageSrc] = useState(member.imageUrl);
 
-	const CardContent = () => (
+	const content = (
 		<div className="relative w-full h-full group cursor-pointer">
 			{/* Image */}
 			<div className="relative w-full h-full rounded-3xl overflow-hidden bg-gradient-to-b from-transparent via-transparent to-black/60">
@@ -37,18 +37,8 @@ export default function PersonCard({
 
 			{/* Text Content */}
 			<div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-				<h3
-					className="text-xl md:text-2xl font-bold mb-1"
-					style={{ fontFamily: "Poppins, sans-serif" }}
-				>
-					{member.name}
-				</h3>
-				<p
-					className="text-sm md:text-base text-white/90"
-					style={{ fontFamily: "Poppins, sans-serif" }}
-				>
-					{member.role}
-				</p>
+				<h3 className="text-xl md:text-2xl font-bold mb-1">{member.name}</h3>
+				<p className="text-sm md:text-base text-white/90">{member.role}</p>
 			</div>
 		</div>
 	);
@@ -61,14 +51,10 @@ export default function PersonCard({
 				rel="noopener noreferrer"
 				className={`block w-full aspect-[3/4] ${className}`}
 			>
-				<CardContent />
+				{content}
 			</a>
 		);
 	}
 
-	return (
-		<div className={`w-full aspect-[3/4] ${className}`}>
-			<CardContent />
-		</div>
-	);
+	return <div className={`w-full aspect-[3/4] ${className}`}>{content}</div>;
 }
