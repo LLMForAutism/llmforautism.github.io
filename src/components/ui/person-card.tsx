@@ -37,12 +37,8 @@ export default function PersonCard({
 
 			{/* Text Content */}
 			<div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-				<h3 className="text-xl md:text-2xl font-bold mb-1">
-					{member.name}
-				</h3>
-				<p className="text-sm md:text-base text-white/90">
-					{member.role}
-				</p>
+				<h3 className="text-xl md:text-2xl font-bold mb-1">{member.name}</h3>
+				<p className="text-sm md:text-base text-white/90">{member.role}</p>
 			</div>
 		</div>
 	);
@@ -60,9 +56,5 @@ export default function PersonCard({
 		);
 	}
 
-	return (
-		<div className={`w-full aspect-[3/4] ${className}`}>
-			{content}
-		</div>
-	);
+	return <div className={`w-full aspect-[3/4] ${className}`}>{content}</div>;
 }
